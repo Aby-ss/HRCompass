@@ -12,6 +12,7 @@ from datetime import datetime
 import numpy as np
 import pandas as pd
 import asciichartpy
+import math
 
 console = Console()
 layout = Layout()
@@ -63,16 +64,23 @@ def Employee_DB():
     return Panel(EDP_table, title = "Employee Database", title_align = "left", style = "Bold White")
 
 def Firm_Productivity():
-    y_value = np.random.uniform(low=0.0, high = 10.0, size = 70)
-    chart = asciichartpy.plot(y_value, {"height" : 16, "width" : 50})
+    x = [i * 0.1 for i in range(0, 68)]
+    y = [math.cos(xi) for xi in x]
+    chart = asciichartpy.plot(y, {"height" : 16, "width" : 50})
 
     return Panel(chart, title = "Firm Productivity", title_align = "left", style = "bold white")
 
-def Best_Performace():
-    ...
+def Attendance():
+    x = [i * 0.1 for i in range(0, 63)]
+    y_values = [math.sin(xi) for xi in x]
+    chart_data = asciichartpy.plot(y_values, {'height': 16, 'width': 50})
+
+    return Panel(chart_data, title="Bar Chart")
+
 
 layout["Header"].update(Header())
 layout["BR_1"].update(Employee_DB())
 layout["BL_1"].update(Firm_Productivity())
+layout["BR_2"].update(Attendance())
 
 print(layout)

@@ -7,7 +7,10 @@ from PIL import Image
 person = {
     "name": "John Doe",
     "age": 30,
-    "occupation": "Software Engineer"
+    "occupation": "Software Engineer",
+    "nationality": "United States of America",
+    "hours_worked": 120,
+    "Department": "IT Support"
 }
 
 # generate random pixels for person's face
@@ -24,12 +27,10 @@ img.putdata([pixel for row in pixels for pixel in row])
 
 # create panel with person's specifications and image
 panel = Panel.fit(
-    f"[b]{person['name']}[/b]\n\n[b]AGE[/b]: {person['age']}\n[b]OCCUPATION[/b]: {person['occupation']}\n\n[b]ID[/b]",
+        f"[b]{person['name']}[/b]\n\n[b]AGE[/b]: {person['age']}\n[b]OCCUPATION[/b]: {person['occupation']}\n[b]NATIONALITY[/]: {person['nationality']}\n[b]HOURS WORKED THIS WEEK[/]: {person['hours_worked']}\n[b]DEPARTMENT[/]: {person['Department']}\n[b]ID[/b]",
     title="ID Card",
     border_style="green",
     padding=(1, 2),
-    highlight=False,
-    body=img,
     width=50
 )
 
